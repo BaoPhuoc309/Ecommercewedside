@@ -1,0 +1,81 @@
+@import "../../App.scss";
+
+// .category {
+//   &__title {
+//     margin-bottom: 16px;
+//   }
+
+//   &-slider {
+//     .ant-card-cover {
+//       min-height: 200px;
+//     }
+//   }
+// }
+
+// .category-trending {
+//   .ant-card-cover {
+//     min-height: 200px;
+//   }
+// }
+
+// .category-bestseller {
+//   &__banner {
+//     img {
+//       height: 387px;
+//       border-radius: 10px;
+//     }
+//   }
+// }
+
+.container {
+  // ... các kiểu dáng khác
+
+  .slider {
+    .card {
+      flex: 0 0 calc(33.333% - 15px); // Căn chỉnh kích thước của các slide (3 cột)
+      margin: 8px; // Khoảng cách giữa các slide
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05); // Hiệu ứng hover
+      }
+
+      .card-top {
+        overflow: hidden;
+        background: no-repeat;
+        background-size: cover;
+        img {
+          width: 240px;
+          height: 200px;
+          opacity: 1;
+          border-radius: 10px;
+        }
+
+        h3 {
+          width: 100%;
+          padding: 8px;
+        }
+      }
+    }
+  }
+  .category-banner {
+    position: relative;
+    &__card {
+      .ant-card-body {
+        position: absolute;
+        top: 10px;
+      }
+    }
+  }
+
+  .category-bestseller {
+    &__banner {
+      img {
+        border-radius: 8px;
+        height: 375px;
+      }
+    }
+  }
+}
