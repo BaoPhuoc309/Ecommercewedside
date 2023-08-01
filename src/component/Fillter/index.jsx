@@ -42,7 +42,7 @@ const Filter = () => {
   };
 
   const onChangeBrand = (checkedValue) => {
-    console.log(checkedValue);
+    console.log(checkedValue, "value ne");
     dispatch(setBrandFilter(checkedValue));
   };
 
