@@ -39,7 +39,7 @@
       transition: transform 0.3s ease;
 
       &:hover {
-        transform: scale(1.05); // Hiệu ứng hover
+        transform: scale(1.05);
       }
 
       .card-top {
@@ -51,6 +51,7 @@
           height: 200px;
           opacity: 1;
           border-radius: 10px;
+          margin: auto;
         }
 
         h3 {
@@ -58,6 +59,9 @@
           padding: 8px;
         }
       }
+    }
+    .slick-slide {
+      padding: 0 10px;
     }
   }
   .category-banner {
@@ -74,7 +78,7 @@
     &__banner {
       img {
         border-radius: 8px;
-        height: 375px;
+        height: 419px;
       }
     }
   }

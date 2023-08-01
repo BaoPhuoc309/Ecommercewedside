@@ -1,0 +1,27 @@
+.product-detail__container {
+  .product-detail__wrapper {
+    .product-detail__item {
+      img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      .product-detail__thumnail {
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      .product-detail__content {
+        width: 400px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .product-detail__card {
+      max-width: 100%;
+    }
+  }
+}

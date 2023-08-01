@@ -46,8 +46,8 @@ const Category = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 5000,
@@ -56,7 +56,7 @@ const Category = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -64,8 +64,8 @@ const Category = () => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -74,7 +74,7 @@ const Category = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },
@@ -94,7 +94,7 @@ const Category = () => {
         <h1 className="category__title text-uppercase text-center my-4 fs-30">
           Trending Categories
         </h1>
-        <p className="category__content text-center fw-1">
+        <p className="category__content text-center fs-17 fw-1">
           The best way to buy the products you love. Take a look at what`s new,
           right now.
         </p>
@@ -158,7 +158,7 @@ const Category = () => {
 
       <section className="category-banner my-4">
         <Row gutter={[16, 16]}>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -174,7 +174,7 @@ const Category = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -190,7 +190,7 @@ const Category = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -206,7 +206,7 @@ const Category = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -222,7 +222,7 @@ const Category = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -238,7 +238,7 @@ const Category = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} xl={8}>
             <Card
               className="category-banner__card"
               bordered={false}
@@ -255,16 +255,17 @@ const Category = () => {
             </Card>
           </Col>
         </Row>
+        <Row gutter={[16, 16]}></Row>
       </section>
 
       <section className="category-deal py-4">
         <h1 className="category__title text-uppercase text-center my-4 fs-30">
           Deal Of The Week
         </h1>
-        <p className="category__content text-center fw-1">
+        <p className="category__content text-center fs-17 fw-1">
           Our weekly sale products with best discount and special gift vouchers.
         </p>
-        <Slider className="slider flex flex-wrap" {...settings}>
+        <Slider className="slider" {...settings}>
           <div className="card">
             <div className="card-top">
               <Card cover={<img src={category7} alt="Laptop" />}>
@@ -405,7 +406,7 @@ const Category = () => {
         <h1 className="category__title text-uppercase text-center my-4 fs-30">
           Trending Products
         </h1>
-        <p className="category__content text-center fw-1">
+        <p className="category__content text-center fs-17 fw-1">
           Our weekly top trending products with category wise feature, latest
           and top sellings.
         </p>
@@ -601,7 +602,7 @@ const Category = () => {
         <h1 className="category-bestseller text-uppercase text-center my-4 fs-30">
           Bestsellers
         </h1>
-        <section className="category-bestseller px-4">
+        <section className="category-bestseller">
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
               <div className="category-bestseller__banner">
@@ -609,7 +610,7 @@ const Category = () => {
               </div>
             </Col>
 
-            <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
+            <Col xs={24} sm={12} md={8} lg={6} xl={5} xxl={4}>
               <Card
                 className="category-bestseller__card"
                 hoverable
@@ -630,28 +631,7 @@ const Category = () => {
                 </Button>
               </Card>
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
-              <Card
-                className="category-bestseller__card"
-                hoverable
-                cover={<img src={category19} alt="Laptop" />}
-              >
-                <Meta title="iPad Pro M2 12.9 inch 2022"></Meta>
-                <span>
-                  <Rate tooltips={desc} onChange={setValue} value={value} />
-                  {value ? (
-                    <span className="ant-rate-text">{desc[value - 1]}</span>
-                  ) : (
-                    ""
-                  )}
-                </span>
-                <h3>$670.00</h3>
-                <Button type="primary">
-                  <ShoppingCartOutlined />
-                </Button>
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
+            <Col xs={24} sm={12} md={8} lg={6} xl={5} xxl={4}>
               <Card
                 className="category-bestseller__card"
                 hoverable
@@ -672,7 +652,7 @@ const Category = () => {
                 </Button>
               </Card>
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
+            <Col xs={24} sm={12} md={8} lg={6} xl={5} xxl={4}>
               <Card
                 className="category-bestseller__card"
                 hoverable
@@ -694,7 +674,7 @@ const Category = () => {
               </Card>
             </Col>
 
-            <Col xs={24} sm={12} md={8} lg={6} xl={4} xxl={4}>
+            <Col xs={24} sm={12} md={8} lg={6} xl={5} xxl={4}>
               <Card
                 className="category-bestseller__card"
                 hoverable

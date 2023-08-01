@@ -4,10 +4,11 @@ import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import "./style.scss";
+import { ROUTER_APP } from "../../constant/Router";
 
 const Profile = () => {
   return (
-    <div className="container py-4">
+    <div className="container ">
       <div className="profile-wrapper">
         <Card className="profile-card">
           <Avatar
@@ -20,13 +21,13 @@ const Profile = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec
             justo eu purus mattis facilisis id eu lectus.
           </p>
-          <Link to="/change-info">
+          <Link to={ROUTER_APP.CHANGEINFO}>
             <Button type="primary">Thay đổi thông tin cá nhân</Button>
           </Link>
-          <Link to="/change-password">
+          <Link to={ROUTER_APP.CHANGEPASSWORD}>
             <Button type="primary">Thay đổi mật khẩu</Button>
           </Link>
-          <Link to="">
+          <Link to={ROUTER_APP.HISTORY}>
             <Button type="primary">Xem lịch sử đơn hàng</Button>
           </Link>
         </Card>

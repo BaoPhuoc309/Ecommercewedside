@@ -1,0 +1,10 @@
+// Responsive
+@media (max-width: 768px) {
+  .filter__wrapper {
+    flex-direction: column;
+  }
+
+  .filter__item {
+    width: 100%;
+  }
+}

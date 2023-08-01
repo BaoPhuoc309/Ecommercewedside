@@ -1,15 +1,24 @@
 import React from "react";
-import { Button, Input, Form } from "antd";
+import { Button, Input, Form, message } from "antd";
 import "./style.scss";
-
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
+import { useDispatch } from "react-redux";
+import { actCreateNewUser } from "../../redux/feature/UserSlice";
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
+  const onFinish = (values) => {
+    console.log(values);
+    if (values.password !== values.confirmPassword) {
+      message.error("Mật khẩu nhập lại không khớp!");
+    } else {
+      dispatch(actCreateNewUser(values));
+    }
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div className="register-container">
       <div className="register-wrapper">
@@ -82,17 +91,8 @@ const RegisterForm = () => {
             hasFeedback
             rules={[
               {
-                required: true,
                 message: "Vui lòng xác nhận mật khẩu!",
               },
-              // ({ getFieldValue }) => ({
-              //   validator(_, value) {
-              //     if (!value || getFieldValue("password") === value) {
-              //       return Promise.resolve();
-              //     }
-              //     return Promise.reject("Mật khẩu xác nhận không trùng khớp!");
-              //   },
-              // }),
             ]}
           >
             <Input.Password />

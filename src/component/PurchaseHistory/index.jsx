@@ -52,7 +52,7 @@ const data = [
 
 const PurchaseHistory = () => {
   return (
-    <div className="purchase-history-container">
+    <div className="purchase-history-container py-4">
       <Card className="purchase-history-card">
         <h1 className="purchase-history-title">Lịch sử đơn hàng</h1>
         <Table columns={columns} dataSource={data} />

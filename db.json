@@ -1,5 +1,194 @@
 {
-  "categories": [],
-
-  "products": []
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "email": "user1@gmail.com",
+      "password": "password1",
+      "phone": "0935907310"
+    },
+    {
+      "username": "asdasdasd",
+      "email": "asdasdasd@gmail.com",
+      "password": "12312312",
+      "confirmPassword": "12312312",
+      "id": 2
+    },
+    {
+      "username": "asdasd",
+      "email": "baophuoc309@gmail.com",
+      "password": "asdasd",
+      "confirmPassword": "asdasd",
+      "id": 3
+    },
+    {
+      "username": "sadasd",
+      "email": "asdasd@gmail.com",
+      "password": "123456789",
+      "confirmPassword": "123456789",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/000…-watch-series-8-graphite-stainless-steel_415.jpeg",
+      "name": "Apple Watch Series 8 Graphite Stainless Steel",
+      "price": "670.00",
+      "brandsId": 5
+    },
+    {
+      "id": 2,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+      "name": "iPhone 14 Pro Max 1TB Silver",
+      "price": "1,600.00",
+      "brandsId": 2
+    },
+    {
+      "id": 3,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000663_speaker-marshall-stockwell-ii-grey_415.jpeg",
+      "name": "Speaker Marshall Stockwell II Grey",
+      "price": "165.00",
+      "brandsId": 4
+    },
+    {
+      "id": 4,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000670_headerphone-marshall-minor-iii_415.jpeg",
+      "name": "Headerphone Marshall Minor III",
+      "price": "1,600.00",
+      "brandsId": 3
+    },
+    {
+      "id": 5,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000690_laptop-msi-modern-14-b11mou-1030vn_415.jpeg",
+      "name": "Laptop MSI Modern 14 B11MOU 1030VN",
+      "price": "1,467.00",
+      "brandsId": 1
+    },
+    {
+      "id": 6,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/000…5-optix-ag32c-165hz-1ms-freesync-red-led_415.jpeg",
+      "name": "Laptop MSI Modern 14 B11MOU 1030VN",
+      "price": "556.00",
+      "brandsId": 1
+    },
+    {
+      "id": 7,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+      "name": "iPhone 14 Pro Max 1TB Silver",
+      "price": "1,600.00",
+      "brandsId": 2
+    },
+    {
+      "id": 8,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+      "name": "iPhone 14 Pro Max 1TB Silver",
+      "price": "1,600.00",
+      "brandsId": 2
+    },
+    {
+      "id": 9,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+      "name": "iPhone 14 Pro Max 1TB Silver",
+      "price": "1,600.00",
+      "brandsId": 2
+    },
+    {
+      "id": 10,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000663_speaker-marshall-stockwell-ii-grey_415.jpeg",
+      "name": "Speaker Marshall Stockwell II Grey",
+      "price": "165.00",
+      "brandsId": 4
+    },
+    {
+      "id": 11,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+      "name": "iPhone 14 Pro Max 1TB Silver",
+      "price": "1.600.00",
+      "brandsId": 2
+    },
+    {
+      "id": 12,
+      "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000670_headerphone-marshall-minor-iii_415.jpeg",
+      "name": "Headerphone Marshall Minor III",
+      "price": "1,600.00",
+      "brandsId": 3
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "name": "LapTop"
+    },
+    {
+      "id": 2,
+      "name": "Iphone"
+    },
+    {
+      "id": 3,
+      "name": "HeadPhone"
+    },
+    {
+      "id": 4,
+      "name": "Speaker"
+    },
+    {
+      "id": 5,
+      "name": "Watch"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "accountId": 1,
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": "$41.97"
+    },
+    {
+      "id": 2,
+      "accountId": 2,
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 3
+        }
+      ],
+      "totalPrice": "$32.97"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "productId": 1,
+      "accountId": 1,
+      "content": "Great product!"
+    },
+    {
+      "id": 2,
+      "productId": 1,
+      "accountId": 2,
+      "content": "Nice quality."
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "title": "Introduction to Shopping",
+      "content": "..."
+    },
+    {
+      "id": 2,
+      "title": "Getting Started with Shoppping",
+      "content": "..."
+    }
+  ]
 }

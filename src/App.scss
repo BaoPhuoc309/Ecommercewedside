@@ -3,7 +3,7 @@
 $clr-black: #000;
 $clr-dark: #303030;
 $clr-white: #fff;
-$clr-whitesmoke: #f5f5f5;
+
 $clr-orange: #f94e30;
 $clr-ligth-orange: #f94e30;
 $clr-ligth-gray: #f2f2f2;
@@ -77,8 +77,9 @@ h6 {
 .mainLayout .ant-layout-header {
   background: #f8f8f8;
   padding: 0;
+  margin: 0;
   height: auto;
-  line-height: 1.6;
+  line-height: 2.3;
 }
 
 // img
@@ -97,7 +98,12 @@ img {
 .container {
   max-width: 1820px;
   padding: 0 auto;
-  margin: 0 2rem;
+  margin: 0 1rem;
+}
+
+// position
+.position {
+  position: sticky;
 }
 
 // display: flex
@@ -197,9 +203,6 @@ img {
   }
   &-black {
     background-color: $clr-black;
-  }
-  &-whitesomkey {
-    background-color: $clr-whitesmoke;
   }
   &-dark {
     background-color: $clr-dark;
@@ -490,4 +493,14 @@ img {
 
 .overflow-y-hidden {
   overflow-y: hidden;
+}
+
+.ant-checkbox-group-item {
+  font-size: 18px;
+}
+
+.ant-card-bordered {
+  .ant-card-cover {
+    margin: 0;
+  }
 }

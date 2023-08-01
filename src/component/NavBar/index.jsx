@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import { Button, Input } from "antd";
 import {
@@ -10,14 +10,16 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ROUTER_APP } from "../../constant/Router";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchCategory,
-  getAllCategories,
-} from "../../redux/feature/categorySlice";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart.carts);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -41,12 +43,15 @@ const Navbar = () => {
             </form>
 
             <div className="navbar-btns fs-20">
-              <Link to="" className="add-to-cart-btn flex">
+              <Link to={ROUTER_APP.ADDCART} className="add-to-cart-btn flex">
                 <span className="btn-icon">
                   <ShoppingCartOutlined />
                 </span>
                 <div className="btn-txt fw-5">
-                  cart<span className="cart-count-value">0</span>
+                  cart
+                  <span className="cart-count-value">
+                    {cartItems?.length || 0}
+                  </span>
                 </div>
               </Link>
             </div>
@@ -67,8 +72,11 @@ const Navbar = () => {
                 <CloseOutlined />
               </Button>
               <li>
-                <Link to={ROUTER_APP.NEW_PRODUCT}>
-                  <h3 className="fs-15 text-uppercase">NewProducts</h3>
+                <Link
+                  className="nav-link fs-12 text-uppercase"
+                  to={ROUTER_APP.NEW_PRODUCT}
+                >
+                  <h3>NewProducts</h3>
                 </Link>
               </li>
             </ul>

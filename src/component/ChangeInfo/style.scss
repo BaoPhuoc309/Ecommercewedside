@@ -1,0 +1,42 @@
+.edit-profile {
+  &__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: auto;
+    row-gap: 20px;
+
+    &__input {
+      margin-bottom: 16px;
+    }
+
+    &__gender-section,
+    &__dob-section {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 16px;
+        font-weight: 500;
+      }
+
+      .ant-radio-group {
+        margin-left: 8px;
+      }
+
+      .ant-picker {
+        margin-left: 8px;
+      }
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}

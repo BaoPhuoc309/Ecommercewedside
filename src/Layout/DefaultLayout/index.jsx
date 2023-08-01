@@ -10,7 +10,7 @@ const { Header, Content, Footer } = Layout;
 
 const DefaultLayOut = () => {
   return (
-    <Layout className="mainLayout">
+    <Layout className="mainLayout bg-white">
       <Header>
         <HeaderComponent />
       </Header>

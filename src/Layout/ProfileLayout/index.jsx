@@ -1,55 +1,32 @@
 import React from "react";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, theme } from "antd";
 import HeaderComponent from "../../component/HeaderComponent";
 import FooterComponent from "../../component/FooterComponent";
 import "./style.scss";
 import Profile from "../../component/Profile/Profile";
-import ProfiledPage from "../../Page/ProfieldPage";
+import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
-const items1 = ["1", "2", "3"].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `subnav ${key}`,
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
-  }
-);
-const App = () => {
+
+const ProfileLayout = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout className="mainLayout">
+    <Layout className="mainLayout bg-white">
       <Header>
         <HeaderComponent />
       </Header>
       <Content
+        className="h-100"
         style={{
-          padding: "0 50px",
+          padding: 24,
         }}
       >
         <Layout
           style={{
-            padding: "24px 0",
+            padding: "24px",
             background: colorBgContainer,
+            height: 500,
           }}
         >
           <Sider
@@ -62,11 +39,10 @@ const App = () => {
           </Sider>
           <Content
             style={{
-              padding: "0 24px",
-              minHeight: 300,
+              minHeight: 280,
             }}
           >
-            <ProfiledPage />
+            <Outlet />
           </Content>
         </Layout>
       </Content>
@@ -76,4 +52,4 @@ const App = () => {
     </Layout>
   );
 };
-export default App;
+export default ProfileLayout;

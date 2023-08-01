@@ -1,65 +1,99 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { STATUS } from "../../until/Status";
-import { BASE_URL } from "../../until/fakeApis";
+import { productApis } from "../../APis/productApis";
+import { converPriceToNumber } from "../../utility/helper";
 
 const initialState = {
+  isLoading: false,
   products: [],
-  productsStatus: STATUS.IDLE,
-  productsSingle: [],
-  productsSingleStatus: STATUS.IDLE,
+  currentProduct: {},
+  pagination: {
+    currentPage: 1,
+    limitPerPage: 8,
+    total: 8,
+  },
+  filter: {
+    price: [0, 1790],
+    brands: null,
+  },
 };
+
+export const fetchAllProduct = createAsyncThunk(
+  "product/fetchAllProduct",
+  async (params = {}) => {
+    const response = await productApis.getAllProducts(params);
+    return {
+      data: response.data,
+      total: response.headers.get("X-Total-Count"),
+    };
+  }
+);
+
+export const actfetchProductById = createAsyncThunk(
+  "product/fetchProductById",
+  async (productId) => {
+    const product = await productApis.getProductById(productId);
+    return product;
+  }
+);
 
 const productSlice = createSlice({
   name: "product",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setNewPage: (state, action) => {
+      state.pagination = {
+        ...state.pagination,
+        currentPage: action.payload,
+      };
+    },
+
+    updateFilter: (state, action) => {
+      const { price, ...otherFilter } = action.payload;
+      const [minPriceStr, maxPriceStr] = price;
+
+      // const minPrice = converPriceToNumber(minPriceStr);
+      // const maxPrice = converPriceToNumber(maxPriceStr);
+
+      // console.log(minPrice, maxPrice, "asdasdasd");
+
+      // if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+      state.filter = {
+        ...state.filter,
+        ...otherFilter,
+        price: [minPriceStr, maxPriceStr],
+      };
+      // }
+    },
+
+    setBrandFilter: (state, action) => {
+      state.filter.brands = action.payload;
+    },
+  },
+
   extraReducers: (builed) => {
     builed
-      .addCase(fetchProduct.pending, (state, action) => {
-        state.productsStatus = STATUS.LOADING;
+      .addCase(fetchAllProduct.pending, (state, action) => {
+        state.isLoading = true;
       })
-      .addCase(fetchProduct.fulfilled, (state, action) => {
-        state.productsStatus = STATUS.SUCCEEDED;
-        state.products = action.payload;
+      .addCase(fetchAllProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.products = action.payload.data;
+        state.pagination.total = action.payload.total;
       })
-
-      .addCase(fetchProduct.rejected, (state, action) => {
-        state.productsStatus = STATUS.FAILED;
+      .addCase(fetchAllProduct.rejected, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
       })
-
-      .addCase(fetchSingleProduct.pending, (state, action) => {
-        state.productsSingleStatus = STATUS.LOADING;
+      .addCase(actfetchProductById.pending, (state, action) => {
+        state.isLoading = true;
       })
-
-      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
-        state.productsSingleStatus = STATUS.SUCCEEDED;
-        state.productsSingle = action.payload;
-      })
-
-      .addCase(fetchSingleProduct.rejected, (state, action) => {
-        state.productsSingleStatus = STATUS.FAILED;
+      .addCase(actfetchProductById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentProduct = action.payload;
       });
   },
 });
 
-// getting the products list with limited
-export const fetchProduct = createAsyncThunk(
-  "product/fetchProduct",
-  async (limit) => {
-    const response = await fetch(`${BASE_URL}products?limit=${limit}`);
-    const data = await response.json();
-    return data.products;
-  }
-);
-
-// getting the single product data
-export const fetchSingleProduct = createAsyncThunk(
-  "products/fetchSingleProduct",
-  async (id) => {
-    const response = await fetch(`${BASE_URL}products/${id}`);
-    const data = await response.json();
-    return data;
-  }
-);
-
+export const { updateFilter, setNewPage, setBrandFilter } =
+  productSlice.actions;
 export default productSlice.reducer;

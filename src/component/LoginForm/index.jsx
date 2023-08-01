@@ -13,7 +13,7 @@ const onFinishFailed = (errorInfo) => {
 const LoginForm = () => (
   <div className="register-container">
     <div className="register-wrapper">
-      <h1 className="register-title">Đăng ký tài khoản</h1>
+      <h1 className="register-title">Đăng nhập tài khoản</h1>
       <Form
         name="normal_login"
         className="login-form"
