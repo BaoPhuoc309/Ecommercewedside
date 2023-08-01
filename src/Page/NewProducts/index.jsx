@@ -16,10 +16,10 @@ const NewProducts = () => {
   );
 
   useEffect(() => {
-    const { price } = filter;
+    const { price, brandsId } = filter;
     if (Array.isArray(price) && price.length === 2) {
       const [minPrice, maxPrice] = price;
-
+      console.log(brandsId);
       const newFilter = {
         ...filter,
         price_lte: maxPrice,

@@ -13,7 +13,7 @@ const initialState = {
   },
   filter: {
     price: [0, 1790],
-    brands: null,
+    brandsId: [],
   },
 };
 
@@ -66,7 +66,7 @@ const productSlice = createSlice({
     },
 
     setBrandFilter: (state, action) => {
-      state.filter.brands = action.payload;
+      state.filter.brandsId = action.payload;
     },
   },
 

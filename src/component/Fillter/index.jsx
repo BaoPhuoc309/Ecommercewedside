@@ -14,11 +14,11 @@ const Filter = () => {
   const typingTimeoutRef = useRef(null);
 
   const brands = [
-    { label: "Laptop", value: "Laptop" },
-    { label: "iPhone", value: "iPhone" },
-    { label: "HeadPhone", value: "HeadPhone" },
-    { label: "Speaker", value: "Speaker" },
-    { label: "Watch", value: "Watch" },
+    { label: "Laptop", value: 1 },
+    { label: "iPhone", value: 2 },
+    { label: "HeadPhone", value: 3 },
+    { label: "Speaker", value: 4 },
+    { label: "Watch", value: 5 },
   ];
 
   const onChangePrice = (value) => {
@@ -42,7 +42,6 @@ const Filter = () => {
   };
 
   const onChangeBrand = (checkedValue) => {
-    console.log(checkedValue, "value ne");
     dispatch(setBrandFilter(checkedValue));
   };
 
@@ -78,7 +77,7 @@ const Filter = () => {
             <Checkbox.Group
               className="flex flex-column mx-2"
               options={brands}
-              value={filter.brands}
+              value={filter.brandsId}
               onChange={onChangeBrand}
             />
           </Card>

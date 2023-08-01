@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "user1",
-      "email": "user1@gmail.com",
-      "password": "password1",
-      "phone": "0935907310"
-    },
-    {
       "username": "asdasdasd",
       "email": "asdasdasd@gmail.com",
       "password": "12312312",
@@ -27,6 +20,13 @@
       "password": "123456789",
       "confirmPassword": "123456789",
       "id": 4
+    },
+    {
+      "username": "kieden",
+      "email": "baophuoc409@gmail.com",
+      "password": "32456789",
+      "confirmPassword": "32456789",
+      "id": 5
     }
   ],
   "products": [
