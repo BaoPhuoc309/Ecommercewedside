@@ -1,27 +1,131 @@
 .product-detail__container {
-  .product-detail__wrapper {
-    .product-detail__item {
-      img {
-        width: 400px;
-        height: 400px;
-        object-fit: cover;
-      }
+  padding: 20px;
+}
 
-      .product-detail__thumnail {
-        img {
-          width: 100px;
-          height: 100px;
-        }
-      }
+.product-detail__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
 
-      .product-detail__content {
-        width: 400px;
-      }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.product-detail__item {
+  flex: 1;
+  min-width: 300px;
+  margin: 0 10px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.product-detail__card {
+  margin-bottom: 20px;
+}
+
+.product-detail__thumbnail {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border: 1px solid #ccc;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.product-detail__content {
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+.product-detail__price-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-detail__title {
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+}
+
+.product-detail__input {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.product-detail__add-to-cart {
+  margin-left: 10px;
+}
+
+.product-detail__list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 20px;
+
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+.product-detail__tabs {
+  margin-top: 20px;
+}
+
+.product-detail__write-review {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .product-detail__write-review-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: red; /* Màu đỏ */
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+
+  .ant-form {
+    max-width: 600px; /* Độ rộng tối đa là 600px */
+    width: 100%; /* Đảm bảo độ rộng 100% của container */
+  }
+
+  .product-detail__form-item {
+    margin-bottom: 15px;
+
+    label {
+      font-weight: bold;
     }
   }
-  @media (max-width: 768px) {
-    .product-detail__card {
-      max-width: 100%;
-    }
+
+  .product-detail__submit-button {
+    align-self: flex-end;
+    margin-top: 15px;
   }
 }

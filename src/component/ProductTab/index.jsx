@@ -37,14 +37,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product17} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -53,14 +53,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product1} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -69,14 +69,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product2} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -85,14 +85,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product3} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -101,14 +101,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product4} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -122,14 +122,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product17} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -138,14 +138,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product5} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -154,14 +154,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product6} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -170,14 +170,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product7} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -186,14 +186,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product8} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -208,14 +208,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product17} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -224,30 +224,30 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product9} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
               </Card>
             </div>
             <div className="product-tab__item">
-              <Card className="flex" cover={<img src={product10} alt="" />}>
+              <Card className="flex" cover={<img src={product14} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -256,14 +256,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product11} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -272,14 +272,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product12} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -294,14 +294,14 @@ const ProductTab = () => {
             <div className="product-tab__item ">
               <Card className="flex" cover={<img src={product17} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -310,14 +310,14 @@ const ProductTab = () => {
             <div className="product-tab__item">
               <Card className="flex" cover={<img src={product13} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -326,14 +326,14 @@ const ProductTab = () => {
             <div className="product-tab__item ">
               <Card className="flex" cover={<img src={product14} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -342,14 +342,14 @@ const ProductTab = () => {
             <div className="product-tab__item ">
               <Card className="flex" cover={<img src={product15} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>
@@ -358,14 +358,14 @@ const ProductTab = () => {
             <div className="product-tab__item ">
               <Card className="flex" cover={<img src={product16} alt="" />}>
                 <Meta title="Dell 27" />
-                <span>
+                {/* <span>
                   <Rate tooltips={desc} onChange={setValue} value={value} />
                   {value ? (
                     <span className="ant-rate-text">{desc[value - 1]}</span>
                   ) : (
                     ""
                   )}
-                </span>
+                </span> */}
                 <Button className="flex flex-wrap py-2" type="primary">
                   <ShoppingCartOutlined />
                 </Button>

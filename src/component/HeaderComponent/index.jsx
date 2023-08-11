@@ -2,10 +2,57 @@ import React from "react";
 import "./style.scss";
 import { ROUTER_APP } from "../../constant/Router";
 import { Link } from "react-router-dom";
-import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import Navbar from "../NavBar";
+import { Button, Dropdown } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../redux/feature/UserSlice";
 
 const HeaderComponent = () => {
+  const dispatch = useDispatch();
+
+  const { isLoggedIn, useuserInfor } = useSelector((state) => state.user);
+
+  const items = [
+    {
+      key: "1",
+      label: <Link to={ROUTER_APP.LOGIN_PAGE}>Login</Link>,
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: "2",
+      label: <Link to={ROUTER_APP.REGISTER_PAGE}>Register</Link>,
+    },
+  ];
+
+  const itemsLoginSuccess = [
+    {
+      key: "1",
+      label: <Link to={ROUTER_APP.PROFILE}>My Profile</Link>,
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: "2",
+      label: (
+        <Button
+          onClick={() => {
+            dispatch(logOut());
+          }}
+        >
+          Logout
+        </Button>
+      ),
+    },
+  ];
+
   return (
     <header className="header text-white">
       <div className="container">
@@ -43,15 +90,29 @@ const HeaderComponent = () => {
               </ul>
             </div>
             <div className="header-cnt-top-r">
-              <ul className="top-links fs-13 flex align-center">
-                <li className="top-links-itm-txt">
-                  <Link to={ROUTER_APP.REGISTER_PAGE}>Đăng Ký</Link>
-                </li>
-                <li className="vert-line"></li>
-                <li className="top-links-itm-txt">
-                  <Link to={ROUTER_APP.LOGIN_PAGE}>Đăng Nhập</Link>
-                </li>
-              </ul>
+              {!isLoggedIn && (
+                <div className="header-top__loginRegisterGrp">
+                  <div className="header-top__icon">
+                    <Dropdown menu={{ items }} placement="bottomLeft">
+                      <UserOutlined />
+                    </Dropdown>
+                  </div>
+                </div>
+              )}
+
+              {isLoggedIn && (
+                <div className="header-top__loginRegisterGrp">
+                  <div className="header-top__icon">
+                    <Dropdown
+                      menu={{ items: itemsLoginSuccess }}
+                      trigger={"click"}
+                      placement="bottomLeft"
+                    >
+                      <UserOutlined />
+                    </Dropdown>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           {/* header bottom */}

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Button, Card, InputNumber, Rate, Tabs } from "antd";
-
+import { Button, Card, Form, Input, InputNumber, List, Rate, Tabs } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import "./style.scss";
 import { useDispatch } from "react-redux";
 import { actAddToCart } from "../../redux/feature/cartSlice";
-
-const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+const { TabPane } = Tabs;
 
 const ProductDetail = ({ currentProduct }) => {
   const dispatch = useDispatch();
@@ -15,13 +14,54 @@ const ProductDetail = ({ currentProduct }) => {
     dispatch(actAddToCart({ ...currentProduct, quantity: quantity }));
   };
 
-  const [value, setValue] = useState(3);
-
   const items = [
     {
       key: "1",
       label: `DESCRIPTION`,
       children: `Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis.`,
+    },
+    {
+      key: "2",
+      label: "REVIEWS",
+      children: (
+        <div className="product-detail__write-review">
+          <h3 className="product-detail__write-review-title">
+            Write Your Own Review
+          </h3>
+          <p>Only registered users can write reviews</p>
+          <Form
+            name="basic"
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 16,
+            }}
+            style={{
+              maxWidth: 600,
+            }}
+          >
+            <Form.Item name="title" label="Title">
+              <Input />
+            </Form.Item>
+
+            <Form.Item name="comment" label="Comment">
+              <Input.TextArea />
+            </Form.Item>
+
+            <Form.Item name="rating" label="Rating">
+              <Rate />
+            </Form.Item>
+            <Button
+              className="product-detail__submit-button"
+              type="primary"
+              htmlType="submit"
+            >
+              Submit Review
+            </Button>
+          </Form>
+        </div>
+      ),
     },
   ];
 
@@ -31,9 +71,10 @@ const ProductDetail = ({ currentProduct }) => {
         {currentProduct ? (
           <>
             <div className="product-detail__item">
-              <Card>
-                <img src={currentProduct.imgURL} alt="" />
-              </Card>
+              <Card
+                className="product-detail__card"
+                cover={<img src={currentProduct.imgURL} alt="" />}
+              ></Card>
               <div className="flex justify-center py-2">
                 <div className="product-detail__thumnail mx-2">
                   <img src={currentProduct.imgURL} alt="" />
@@ -45,13 +86,6 @@ const ProductDetail = ({ currentProduct }) => {
                   <img src={currentProduct.imgURL} alt="" />
                 </div>
               </div>
-              <div className="py-4">
-                <Tabs
-                  className="fs-15 fw-5"
-                  defaultActiveKey="1"
-                  items={items}
-                />
-              </div>
             </div>
 
             <div className="product-detail__item">
@@ -60,12 +94,7 @@ const ProductDetail = ({ currentProduct }) => {
                   <h1>{currentProduct.name}</h1>
                 </div>
                 <span>
-                  <Rate tooltips={desc} onChange={setValue} value={value} />
-                  {value ? (
-                    <span className="ant-rate-text">{desc[value - 1]}</span>
-                  ) : (
-                    ""
-                  )}
+                  <Rate disabled />
                 </span>
                 <p>
                   Speaker Marshall Middleton Black Nunc facilisis sagittis
@@ -76,12 +105,15 @@ const ProductDetail = ({ currentProduct }) => {
             </div>
             <div className="product-detail__item">
               <div className="product-detail__price">
-                <Card style={{ width: 400 }}>
+                <Card className="product-detail__price-card">
                   <div className="product-detail__title">
-                    <h1>{currentProduct.price}</h1>
+                    <h1 className="product-detail__price-value">
+                      {currentProduct.price}
+                    </h1>
                   </div>
-                  <div className="flex">
+                  <div className="product-detail__input">
                     <InputNumber
+                      className="product-detail__input-number"
                       onChange={(value) => setQuantity(value)}
                       min={1}
                       max={10}
@@ -89,16 +121,16 @@ const ProductDetail = ({ currentProduct }) => {
                     />
                     <Button
                       onClick={() => handleAddToCart(currentProduct)}
-                      className="mx-2"
+                      className="product-detail__add-to-cart"
                       type="primary"
                     >
-                      Add To Cart
+                      Add To Cart <ShoppingCartOutlined />
                     </Button>
                   </div>
-                  <ul className="flex flex-column py-2">
+                  <ul className="product-detail__list">
                     <li>Manufacturer: </li>
-                    <li>Availability: </li>
-                    <li>SKU:</li>
+                    <li>Availability:</li>
+                    <li>SKU: {currentProduct.sku}</li>
                     <li>Free shipping</li>
                   </ul>
                 </Card>
@@ -108,6 +140,21 @@ const ProductDetail = ({ currentProduct }) => {
         ) : (
           <p>Product not found.</p>
         )}
+      </div>
+      <div className="product-detail__item">
+        <div className="product-detail__tabs">
+          <Card>
+            <Tabs className="product-detail__tabs-content" defaultActiveKey="1">
+              {items.map((item) => (
+                <TabPane key={item.key} tab={item.label}>
+                  <p className="product-detail__description-text">
+                    {item.children}
+                  </p>
+                </TabPane>
+              ))}
+            </Tabs>
+          </Card>
+        </div>
       </div>
     </div>
   );

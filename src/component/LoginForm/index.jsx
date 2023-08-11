@@ -6,24 +6,17 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTER_APP } from "../../constant/Router";
 import { useDispatch } from "react-redux";
-import {
-  actLoginUser,
-  loginFailure,
-  loginSuccess,
-} from "../../redux/feature/UserSlice";
+import { actLoginUser, loginFailure } from "../../redux/feature/UserSlice";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log(values);
     const { username, password } = values;
     dispatch(actLoginUser({ username, password }));
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log(errorInfo);
     dispatch(loginFailure(errorInfo));
   };
 

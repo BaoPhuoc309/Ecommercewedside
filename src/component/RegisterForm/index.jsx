@@ -7,7 +7,6 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log(values);
     if (values.password !== values.confirmPassword) {
       message.error("Mật khẩu nhập lại không khớp!");
     } else {

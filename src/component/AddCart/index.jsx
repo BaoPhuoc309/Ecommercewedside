@@ -4,9 +4,13 @@ import { Button, Card } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import ProductTable from "../ProductTable";
+import { useNavigate } from "react-router-dom";
+import { ROUTER_APP } from "../../constant/Router";
 
 const AddCart = () => {
   const cartItems = useSelector((state) => state.cart.carts);
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const getTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => {
@@ -18,6 +22,14 @@ const AddCart = () => {
     }, 0);
 
     return totalPrice.toFixed(2);
+  };
+
+  const handleCheckOut = () => {
+    if (isLoggedIn) {
+      navigate(ROUTER_APP.CHECKOUT);
+    } else {
+      navigate(ROUTER_APP.LOGIN_PAGE);
+    }
   };
 
   return (
@@ -42,7 +54,11 @@ const AddCart = () => {
               <h3>Total: {getTotalPrice()}</h3>
             </div>
             <div className="add-cart__btn">
-              <Button style={{ width: 255 }} type="primary">
+              <Button
+                onClick={handleCheckOut}
+                style={{ width: 255 }}
+                type="primary"
+              >
                 <ShoppingCartOutlined />
               </Button>
             </div>

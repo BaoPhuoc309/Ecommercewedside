@@ -10,6 +10,29 @@
 
   .header-cnt-top {
     border-bottom: 1px solid lighten($clr-orange, 10%);
+
+    .header-cnt-top-r {
+      .header-top__loginRegisterGrp {
+        display: flex;
+        align-items: center;
+
+        .header-top__icon {
+          cursor: pointer;
+
+          &:hover {
+            color: #1890ff;
+          }
+        }
+
+        .header-top__user-avatar {
+          cursor: pointer;
+
+          &:hover {
+            color: #1890ff;
+          }
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 62em) {

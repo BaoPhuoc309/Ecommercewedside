@@ -4,8 +4,7 @@
       "username": "asdasdasd",
       "email": "asdasdasd@gmail.com",
       "password": "12312312",
-      "confirmPassword": "12312312",
-      "id": 2
+      "confirmPassword": "12312312"
     },
     {
       "username": "asdasd",
@@ -139,30 +138,33 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "accountId": 1,
-      "products": [
+      "fullName": "kiedenád",
+      "email": "baophuoc309@gmail.com",
+      "phoneNumber": "123123",
+      "homeAddress": "sdsadasd",
+      "street": "ádasd",
+      "houseNumber": "1231231",
+      "province": "tpHCM",
+      "district": "quan2",
+      "ward": "phuong2",
+      "userId": 5,
+      "cartItems": [
         {
-          "productId": 1,
+          "id": 3,
+          "name": "Speaker Marshall Stockwell II Grey",
+          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000663_speaker-marshall-stockwell-ii-grey_415.jpeg",
+          "price": "165.00",
           "quantity": 2
         },
         {
-          "productId": 2,
-          "quantity": 1
+          "id": 5,
+          "name": "Laptop MSI Modern 14 B11MOU 1030VN",
+          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000690_laptop-msi-modern-14-b11mou-1030vn_415.jpeg",
+          "price": "1,467.00",
+          "quantity": 2
         }
       ],
-      "totalPrice": "$41.97"
-    },
-    {
-      "id": 2,
-      "accountId": 2,
-      "products": [
-        {
-          "productId": 1,
-          "quantity": 3
-        }
-      ],
-      "totalPrice": "$32.97"
+      "id": 1
     }
   ],
   "comments": [

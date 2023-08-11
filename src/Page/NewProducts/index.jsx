@@ -11,6 +11,7 @@ import Filter from "../../component/Fillter";
 
 const NewProducts = () => {
   const dispatch = useDispatch();
+
   const { isLoading, products, pagination, filter } = useSelector(
     (state) => state.product
   );

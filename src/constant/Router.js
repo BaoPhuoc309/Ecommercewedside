@@ -10,4 +10,6 @@ export const ROUTER_APP = {
   CHANGEINFO: "/change-info",
   HISTORY: "/history",
   ADDCART: "/addcart",
+  CHECKOUT: "/checkout",
+  SUCCESSCHECKOUT: "/success",
 };

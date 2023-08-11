@@ -1,14 +1,17 @@
 import React from "react";
 import { Table, Button, InputNumber } from "antd";
-import { useDispatch } from "react-redux";
-import { actAddToCart, actRemoveFromCart } from "../../redux/feature/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  actRemoveFromCart,
+  actUpdatequantity,
+} from "../../redux/feature/cartSlice";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const ProductTable = ({ cartItems }) => {
   const dispatch = useDispatch();
 
-  const handleAddToCart = (product) => {
-    dispatch(actAddToCart({ ...product, quantity: 1 }));
+  const handleUpdateQuantity = (id, quantity) => {
+    dispatch(actUpdatequantity({ id: id, quantity: quantity }));
   };
 
   const handleRemoveFromCart = (productId) => {
@@ -43,7 +46,7 @@ const ProductTable = ({ cartItems }) => {
           min={1}
           max={10}
           value={product.quantity}
-          onChange={(value) => handleAddToCart({ ...product, quantity: value })}
+          onChange={(value) => handleUpdateQuantity(product.id, value)}
         />
       ),
     },

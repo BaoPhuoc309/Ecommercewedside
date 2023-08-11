@@ -19,6 +19,8 @@ import DetailPage from "./Page/DetailPage";
 import AddCart from "./component/AddCart";
 import ShoppingCart from "./Page/shoppingCart";
 import { GlobalHistory } from "./utility/globalHistory";
+import CheckoutPage from "./Page/CheckoutPage";
+import SuccessPage from "./Page/SuccessPage";
 
 function App() {
   return (
@@ -29,10 +31,15 @@ function App() {
           <Route element={<DefaultLayOut />}>
             <Route path={ROUTER_APP.HOME} element={<Home />} />
             <Route path={ROUTER_APP.NEW_PRODUCT} element={<NewProducts />} />
-            <Route path={ROUTER_APP.LOGIN_PAGE} element={<LoginPage />} />
-            <Route path={ROUTER_APP.REGISTER_PAGE} element={<RegisterPage />} />
             <Route path={ROUTER_APP.DETAIL} element={<DetailPage />} />
             <Route path={ROUTER_APP.ADDCART} element={<ShoppingCart />} />
+            <Route path={ROUTER_APP.REGISTER_PAGE} element={<RegisterPage />} />
+            <Route path={ROUTER_APP.LOGIN_PAGE} element={<LoginPage />} />
+            <Route path={ROUTER_APP.CHECKOUT} element={<CheckoutPage />} />
+            <Route
+              path={ROUTER_APP.SUCCESSCHECKOUT}
+              element={<SuccessPage />}
+            />
           </Route>
 
           <Route element={<ProfileLayout />}>
