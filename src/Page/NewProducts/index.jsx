@@ -8,19 +8,20 @@ import {
 import { Pagination, Spin } from "antd";
 import Product from "../../component/Product";
 import Filter from "../../component/Fillter";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const NewProducts = () => {
   const dispatch = useDispatch();
-
-  const { isLoading, products, pagination, filter } = useSelector(
+  const [searchParams] = useSearchParams();
+  const searchParam = searchParams.get("search");
+  const { isLoading, products, pagination, filter, searchKey } = useSelector(
     (state) => state.product
   );
 
   useEffect(() => {
-    const { price, brandsId } = filter;
+    const { price } = filter;
     if (Array.isArray(price) && price.length === 2) {
       const [minPrice, maxPrice] = price;
-      console.log(brandsId);
       const newFilter = {
         ...filter,
         price_lte: maxPrice,
@@ -29,25 +30,34 @@ const NewProducts = () => {
       delete newFilter.price;
       dispatch(
         fetchAllProduct({
-          _page: pagination.currentPage,
+          _page: 1,
           _limit: pagination.limitPerPage,
           ...newFilter,
+          q: searchParam,
         })
       );
     } else {
       dispatch(
         fetchAllProduct({
-          _page: pagination.currentPage,
+          _page: 1,
           _limit: pagination.limitPerPage,
           filter,
+          q: searchParam,
         })
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pagination.currentPage, filter]);
+  }, [filter, searchParam]);
 
   const handleChangePage = (newPage) => {
     dispatch(setNewPage(newPage));
+    dispatch(
+      fetchAllProduct({
+        _page: newPage,
+        _limit: pagination.limitPerPage,
+        q: searchKey,
+      })
+    );
   };
 
   return (

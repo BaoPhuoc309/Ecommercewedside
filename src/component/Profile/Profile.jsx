@@ -2,11 +2,14 @@ import React from "react";
 import { Card, Avatar, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
 import "./style.scss";
 import { ROUTER_APP } from "../../constant/Router";
+import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const { userInfor } = useSelector((state) => state.user);
+
   return (
     <div className="container ">
       <div className="profile-wrapper">
@@ -16,7 +19,7 @@ const Profile = () => {
             icon={<UserOutlined />}
             className="profile-avatar"
           />
-          <h1 className="profile-title">John Doe</h1>
+          <h1 className="profile-title">{userInfor.username}</h1>
           <p className="profile-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec
             justo eu purus mattis facilisis id eu lectus.

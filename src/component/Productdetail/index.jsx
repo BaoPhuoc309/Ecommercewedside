@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Button, Card, Form, Input, InputNumber, List, Rate, Tabs } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import "./style.scss";
+import { Button, Card, InputNumber, Rate } from "antd";
+import {
+  ShoppingCartOutlined,
+  StarFilled,
+  StarOutlined,
+} from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { actAddToCart } from "../../redux/feature/cartSlice";
-const { TabPane } = Tabs;
+import "./style.scss";
+import { calculateAverageRating } from "../../utility/helper";
 
-const ProductDetail = ({ currentProduct }) => {
+const ProductDetail = ({ currentProduct, comments }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
@@ -14,56 +18,22 @@ const ProductDetail = ({ currentProduct }) => {
     dispatch(actAddToCart({ ...currentProduct, quantity: quantity }));
   };
 
-  const items = [
-    {
-      key: "1",
-      label: `DESCRIPTION`,
-      children: `Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis.`,
-    },
-    {
-      key: "2",
-      label: "REVIEWS",
-      children: (
-        <div className="product-detail__write-review">
-          <h3 className="product-detail__write-review-title">
-            Write Your Own Review
-          </h3>
-          <p>Only registered users can write reviews</p>
-          <Form
-            name="basic"
-            labelCol={{
-              span: 8,
-            }}
-            wrapperCol={{
-              span: 16,
-            }}
-            style={{
-              maxWidth: 600,
-            }}
-          >
-            <Form.Item name="title" label="Title">
-              <Input />
-            </Form.Item>
+  const averageRating = calculateAverageRating(comments);
 
-            <Form.Item name="comment" label="Comment">
-              <Input.TextArea />
-            </Form.Item>
+  const renderStarRating = (rating) => {
+    const roundedRating = Math.round(rating); // Làm tròn rating
+    const stars = [];
 
-            <Form.Item name="rating" label="Rating">
-              <Rate />
-            </Form.Item>
-            <Button
-              className="product-detail__submit-button"
-              type="primary"
-              htmlType="submit"
-            >
-              Submit Review
-            </Button>
-          </Form>
-        </div>
-      ),
-    },
-  ];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= roundedRating) {
+        stars.push(<StarFilled key={i} className="star-filled" />);
+      } else {
+        stars.push(<StarOutlined key={i} className="star-outlined" />);
+      }
+    }
+
+    return stars;
+  };
 
   return (
     <div className="product-detail__container py-4 ">
@@ -93,9 +63,7 @@ const ProductDetail = ({ currentProduct }) => {
                 <div className="product-detail__title">
                   <h1>{currentProduct.name}</h1>
                 </div>
-                <span>
-                  <Rate disabled />
-                </span>
+                <span>{renderStarRating(averageRating)}</span>
                 <p>
                   Speaker Marshall Middleton Black Nunc facilisis sagittis
                   ullamcorper. Proin lectus ipsum, gravida et mattis vulputate,
@@ -140,21 +108,6 @@ const ProductDetail = ({ currentProduct }) => {
         ) : (
           <p>Product not found.</p>
         )}
-      </div>
-      <div className="product-detail__item">
-        <div className="product-detail__tabs">
-          <Card>
-            <Tabs className="product-detail__tabs-content" defaultActiveKey="1">
-              {items.map((item) => (
-                <TabPane key={item.key} tab={item.label}>
-                  <p className="product-detail__description-text">
-                    {item.children}
-                  </p>
-                </TabPane>
-              ))}
-            </Tabs>
-          </Card>
-        </div>
       </div>
     </div>
   );

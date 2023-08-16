@@ -54,7 +54,7 @@ const ProductTable = ({ cartItems }) => {
       title: "Action",
       key: "action",
       render: (_, product) => (
-        <div>
+        <div key={product.id}>
           <Button
             type="danger"
             onClick={() => handleRemoveFromCart(product.id)}

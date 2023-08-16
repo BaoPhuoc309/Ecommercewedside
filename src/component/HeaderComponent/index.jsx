@@ -10,12 +10,11 @@ import {
 import Navbar from "../NavBar";
 import { Button, Dropdown } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/feature/UserSlice";
+import { logOut } from "../../redux/feature/userSlice";
 
 const HeaderComponent = () => {
   const dispatch = useDispatch();
-
-  const { isLoggedIn, useuserInfor } = useSelector((state) => state.user);
+  const { isLoggedIn, userInfor } = useSelector((state) => state.user);
 
   const items = [
     {
@@ -37,10 +36,11 @@ const HeaderComponent = () => {
       label: <Link to={ROUTER_APP.PROFILE}>My Profile</Link>,
     },
     {
+      key: "2",
       type: "divider",
     },
     {
-      key: "2",
+      key: "3",
       label: (
         <Button
           onClick={() => {

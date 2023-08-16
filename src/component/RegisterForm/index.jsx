@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Input, Form, message } from "antd";
+import { Button, Input, Form, message, DatePicker, Radio } from "antd";
 import "./style.scss";
 import { useDispatch } from "react-redux";
-import { actCreateNewUser } from "../../redux/feature/UserSlice";
+import { actCreateNewUser } from "../../redux/feature/userSlice";
 const RegisterForm = () => {
   const dispatch = useDispatch();
 
@@ -24,18 +24,7 @@ const RegisterForm = () => {
         <h1 className="register-title">Đăng ký tài khoản</h1>
         <Form
           name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          style={{
-            maxWidth: 600,
-          }}
-          initialValues={{
-            remember: true,
-          }}
+          layout="vertical"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
@@ -95,6 +84,18 @@ const RegisterForm = () => {
             ]}
           >
             <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            name="gender"
+            label="Giới tính"
+            rules={[{ required: true, message: "Vui lòng chọn giới tính" }]}
+          >
+            <Radio.Group>
+              <Radio value="male">Nam</Radio>
+              <Radio value="female">Nữ</Radio>
+              <Radio value="other">Khác</Radio>
+            </Radio.Group>
           </Form.Item>
 
           <Form.Item

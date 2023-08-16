@@ -15,6 +15,7 @@ const initialState = {
     price: [0, 1790],
     brandsId: [],
   },
+  searchKey: "",
 };
 
 export const fetchAllProduct = createAsyncThunk(
@@ -68,6 +69,10 @@ const productSlice = createSlice({
     setBrandFilter: (state, action) => {
       state.filter.brandsId = action.payload;
     },
+
+    setSearchKey: (state,action) => {
+      state.searchKey = action.payload;
+    }
   },
 
   extraReducers: (builed) => {
@@ -94,6 +99,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { updateFilter, setNewPage, setBrandFilter } =
+export const { updateFilter, setNewPage, setBrandFilter, setSearchKey } =
   productSlice.actions;
 export default productSlice.reducer;

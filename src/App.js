@@ -43,7 +43,7 @@ function App() {
           </Route>
 
           <Route element={<ProfileLayout />}>
-            <Route path={ROUTER_APP.PROFILE} />
+            <Route path={ROUTER_APP.PROFILE} element={<ChangeInForPage />} />
             <Route path={ROUTER_APP.CHANGEINFO} element={<ChangeInForPage />} />
             <Route
               path={ROUTER_APP.CHANGEPASSWORD}

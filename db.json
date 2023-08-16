@@ -1,31 +1,20 @@
 {
   "users": [
     {
-      "username": "asdasdasd",
-      "email": "asdasdasd@gmail.com",
-      "password": "12312312",
-      "confirmPassword": "12312312"
-    },
-    {
-      "username": "asdasd",
       "email": "baophuoc309@gmail.com",
-      "password": "asdasd",
-      "confirmPassword": "asdasd",
-      "id": 3
-    },
-    {
-      "username": "sadasd",
-      "email": "asdasd@gmail.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "id": 4
-    },
-    {
+      "password": "123123",
+      "confirmPassword": "123123",
+      "gender": "male",
       "username": "kieden",
-      "email": "baophuoc409@gmail.com",
-      "password": "32456789",
-      "confirmPassword": "32456789",
-      "id": 5
+      "id": 1
+    },
+    {
+      "username": "abcd",
+      "email": "baophuoc309@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123",
+      "gender": "male",
+      "id": 2
     }
   ],
   "products": [
@@ -138,59 +127,101 @@
   ],
   "orders": [
     {
-      "fullName": "kiedenád",
+      "fullName": "Bảo Phước",
+      "email": "baophuoc309@gmail.com",
+      "phoneNumber": "01231456789",
+      "homeAddress": "123123",
+      "street": "sadsad",
+      "houseNumber": "12312323",
+      "province": "haNoi",
+      "district": "quan1",
+      "ward": "phuong2",
+      "userId": 1,
+      "cartItems": [
+        {
+          "id": 4,
+          "name": "Headerphone Marshall Minor III",
+          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000670_headerphone-marshall-minor-iii_415.jpeg",
+          "price": "1,600.00",
+          "quantity": 2
+        }
+      ],
+      "createAt": "2023-08-15T09:34:49.099Z",
+      "id": 1
+    },
+    {
+      "fullName": "Bảo Phước",
       "email": "baophuoc309@gmail.com",
       "phoneNumber": "123123",
       "homeAddress": "sdsadasd",
-      "street": "ádasd",
-      "houseNumber": "1231231",
+      "street": "asadasd",
+      "houseNumber": "213123",
       "province": "tpHCM",
       "district": "quan2",
       "ward": "phuong2",
-      "userId": 5,
+      "userId": 1,
       "cartItems": [
+        {
+          "id": 4,
+          "name": "Headerphone Marshall Minor III",
+          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000670_headerphone-marshall-minor-iii_415.jpeg",
+          "price": "1,600.00",
+          "quantity": 1
+        },
         {
           "id": 3,
           "name": "Speaker Marshall Stockwell II Grey",
           "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000663_speaker-marshall-stockwell-ii-grey_415.jpeg",
           "price": "165.00",
           "quantity": 2
-        },
-        {
-          "id": 5,
-          "name": "Laptop MSI Modern 14 B11MOU 1030VN",
-          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000690_laptop-msi-modern-14-b11mou-1030vn_415.jpeg",
-          "price": "1,467.00",
-          "quantity": 2
         }
       ],
-      "id": 1
+      "createAt": "2023-08-15T09:57:29.419Z",
+      "id": 2
+    },
+    {
+      "fullName": "Bảo Phước",
+      "email": "baophuoc309@gmail.com",
+      "phoneNumber": "123123123",
+      "homeAddress": "sdsadasd",
+      "street": "ádasd2112123",
+      "houseNumber": "12312323",
+      "province": "haNoi",
+      "district": "quan2",
+      "ward": "phuong2",
+      "userId": 2,
+      "cartItems": [
+        {
+          "id": 2,
+          "name": "iPhone 14 Pro Max 1TB Silver",
+          "imgURL": "https://nopelectronics.w3nop.com/images/thumbs/0000808_iphone-14-pro-max-1tb-silver_415.jpeg",
+          "price": "1,600.00",
+          "quantity": 4
+        }
+      ],
+      "createAt": "2023-08-15T12:30:10.468Z",
+      "id": 3
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "productId": 1,
-      "accountId": 1,
-      "content": "Great product!"
+      "productId": 3,
+      "userId": 2,
+      "username": "abcd",
+      "title": "asdasd",
+      "content": "123123",
+      "date": "19:35:44 15/8/2023",
+      "id": 1
     },
     {
-      "id": 2,
-      "productId": 1,
-      "accountId": 2,
-      "content": "Nice quality."
-    }
-  ],
-  "blog": [
-    {
-      "id": 1,
-      "title": "Introduction to Shopping",
-      "content": "..."
-    },
-    {
-      "id": 2,
-      "title": "Getting Started with Shoppping",
-      "content": "..."
+      "productId": 3,
+      "userId": 2,
+      "username": "abcd",
+      "title": "asdasd",
+      "content": "123123",
+      "rating": 3,
+      "date": "19:35:54 15/8/2023",
+      "id": 2
     }
   ]
 }

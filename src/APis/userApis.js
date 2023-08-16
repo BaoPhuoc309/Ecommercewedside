@@ -12,7 +12,12 @@ export const userApis = {
   },
 
   updateUserById: async (id, userUpdate) => {
-    return axios.put(`${process.env.REACT_APP_BE_URL}users${id}`, userUpdate);
+    console.log(userUpdate, "user update  ");
+
+    return axios.patch(
+      `${process.env.REACT_APP_BE_URL}users/${id}`,
+      userUpdate
+    );
   },
 
   getAllUsers: async (params) => {

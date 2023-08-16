@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 const SuccessPage = () => {
   const { orders, customInfor } = useSelector((state) => state.order);
 
-  console.log(orders);
-
   return (
     <div className="success-page">
       <p className="fs-30 fw-7">Thank You</p>
@@ -23,7 +21,7 @@ const SuccessPage = () => {
         được ghi nhận.
       </p>
       <p className="order-quantity">
-        Số lượng đơn hàng: {customInfor.cartItems.length}
+        Số lượng đơn hàng: {customInfor.cartItems?.length}
       </p>
       <Button type="primary" className="back-to-shop">
         <Link to={ROUTER_APP.HOME}>Quay lại mua hàng</Link>

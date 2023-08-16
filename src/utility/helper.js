@@ -1,8 +1,12 @@
-export const converPriceToNumber = (priceString) => {
-  if (typeof priceString !== "string") {
-    return 0;
+export const calculateAverageRating = (comments) => {
+  if (comments.length === 0) {
+    return 0; // Trả về 0 nếu không có đánh giá nào
   }
 
-  const numericPriceString = priceString.replace(/[^0-9.]/g, ""); // Remove any non-numeric characters
-  return parseFloat(numericPriceString);
+  const totalRating = comments.reduce(
+    (total, comment) => total + comment.rating,
+    0
+  );
+  const averageRating = totalRating / comments.length;
+  return averageRating;
 };

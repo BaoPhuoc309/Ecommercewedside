@@ -8,17 +8,45 @@ import {
   ShoppingCartOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTER_APP } from "../../constant/Router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSearchKey,
+  fetchAllProduct,
+  setNewPage,
+} from "../../redux/feature/productSlice";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.carts);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const cartItemCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const { searchKey, pagination } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSearchKey = (event) => {
+    event.preventDefault();
+    dispatch(
+      fetchAllProduct({
+        _page: 1,
+        _limit: pagination.limitPerPage,
+        q: searchKey,
+      })
+    );
+    dispatch(setNewPage(1));
+    handleSearch();
+  };
+
+  const handleChangeInputSearch = (event) => {
+    const value = event.target.value;
+    dispatch(setSearchKey(value));
+  };
+
+  const handleSearch = () => {
+    if (searchKey !== "") {
+      navigate(`${ROUTER_APP.NEW_PRODUCT}?search=${searchKey}`);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -32,10 +60,12 @@ const Navbar = () => {
               <span className="text-capitalize mx-2">ShopWatch</span>
             </Link>
 
-            <form className="navbar-search flex ">
+            <form onSubmit={handleSearchKey} className="navbar-search flex ">
               <Input
                 className="navbar-search-input"
                 placeholder="Sreach here..."
+                value={searchKey}
+                onChange={handleChangeInputSearch}
               />
               <Button htmlType="submit" className="navbar-search-btn">
                 <SearchOutlined />

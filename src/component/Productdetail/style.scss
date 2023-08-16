@@ -54,11 +54,9 @@
   }
 }
 
-.product-detail__price-card {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.product-detail__price {
+  position: sticky;
+  top: 20px;
 }
 
 .product-detail__title {
@@ -81,7 +79,6 @@
 .product-detail__list {
   list-style: none;
   padding: 0;
-  text-align: center;
   margin-top: 20px;
 
   li {
@@ -91,41 +88,4 @@
 
 .product-detail__tabs {
   margin-top: 20px;
-}
-
-.product-detail__write-review {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .product-detail__write-review-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  p {
-    color: red; /* Màu đỏ */
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-  }
-
-  .ant-form {
-    max-width: 600px; /* Độ rộng tối đa là 600px */
-    width: 100%; /* Đảm bảo độ rộng 100% của container */
-  }
-
-  .product-detail__form-item {
-    margin-bottom: 15px;
-
-    label {
-      font-weight: bold;
-    }
-  }
-
-  .product-detail__submit-button {
-    align-self: flex-end;
-    margin-top: 15px;
-  }
 }

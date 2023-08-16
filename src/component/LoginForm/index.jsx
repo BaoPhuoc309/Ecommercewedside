@@ -6,7 +6,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTER_APP } from "../../constant/Router";
 import { useDispatch } from "react-redux";
-import { actLoginUser, loginFailure } from "../../redux/feature/UserSlice";
+import { actLoginUser, loginFailure } from "../../redux/feature/userSlice";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const LoginForm = () => {
         <Form
           name="normal_login"
           className="login-form"
+          layout="vertical"
           initialValues={{
             remember: true,
           }}

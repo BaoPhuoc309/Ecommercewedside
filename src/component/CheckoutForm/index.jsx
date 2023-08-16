@@ -35,6 +35,7 @@ const CheckoutForm = () => {
       ...values,
       userId: userInfor.id,
       cartItems: cartItems,
+      createAt: new Date(),
     };
     if (!orderData || cartItems.length === 0) {
       dispatch(sendOrderFailure(orderData));
@@ -96,7 +97,13 @@ const CheckoutForm = () => {
     <Row gutter={[16, 16]}>
       <Col xs={24} md={12}>
         <Card className="checkout-card">
-          <Form onFinish={onFinish} layout="vertical">
+          <Form
+            onFinish={onFinish}
+            layout="vertical"
+            initialValues={{
+              email: userInfor?.email || "",
+            }}
+          >
             <Divider>Thông tin khách hàng</Divider>
 
             <Form.Item
@@ -104,7 +111,7 @@ const CheckoutForm = () => {
               name="fullName"
               rules={[{ required: true, message: "Vui lòng nhập họ và tên" }]}
             >
-              <Input defaultValue={userInfor.username} />
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -115,7 +122,7 @@ const CheckoutForm = () => {
                 { type: "email", message: "Email không hợp lệ" },
               ]}
             >
-              <Input defaultValue={userInfor.email} />
+              <Input />
             </Form.Item>
 
             <Form.Item

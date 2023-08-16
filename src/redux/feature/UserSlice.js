@@ -55,6 +55,13 @@ export const actLoginUser = createAsyncThunk(
   }
 );
 
+export const actUpdateUserById = createAsyncThunk(
+  "user/updateUserById",
+  async ({ id, updatedUser }) => {
+    return await userApis.updateUserById(id, updatedUser);
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: initialState,
@@ -91,6 +98,10 @@ const userSlice = createSlice({
     setUserInfor: (state, action) => {
       state.userInfor = action.payload;
     },
+
+    updateUserSuccess: (state, action) => {
+      state.userInfor = action.payload.updatedUser;
+    },
   },
   extraReducers: (builed) => {
     builed
@@ -120,10 +131,24 @@ const userSlice = createSlice({
       .addCase(actLoginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         globalNavigate(ROUTER_APP.HOME);
+      })
+      .addCase(actUpdateUserById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userInfor = action.payload;
+        message.success("Cập nhật thông tin người dùng thành công");
+      })
+      .addCase(actUpdateUserById.rejected, (state) => {
+        state.isLoading = false;
+        message.error("Lỗi khi cập nhật thông tin người dùng");
       });
   },
 });
 
-export const { loginSuccess, loginFailure, logOut, setUserInfor } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  loginFailure,
+  logOut,
+  setUserInfor,
+  updateUserSuccess,
+} = userSlice.actions;
 export default userSlice.reducer;
