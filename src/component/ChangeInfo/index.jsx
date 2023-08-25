@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button, DatePicker, Radio, Form, Modal } from "antd";
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import dayjs from "dayjs";
 
 import {
+  actFetchAllUsers,
+  actFetchAllUsersById,
   actUpdateUserById,
   updateUserSuccess,
 } from "../../redux/feature/userSlice";
@@ -14,6 +16,8 @@ const ChangeInfo = () => {
   const dispatch = useDispatch();
   const { userInfor } = useSelector((state) => state.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
+  console.log(userInfor, "id ne");
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -26,12 +30,13 @@ const ChangeInfo = () => {
   };
 
   const onFinish = (values) => {
-    dispatch(actUpdateUserById({ id: userInfor.id, userUpdate: values }));
-    setIsModalOpen(false);
+    const updatedUser = { ...userInfor, ...values };
+    dispatch(actUpdateUserById({ id: userInfor.id, updatedUser }));
+    form.resetFields(values);
   };
 
-  const init = {
-    dateOfBirth: dayjs(new Date()),
+  const handleFormReset = () => {
+    form.resetFields();
   };
 
   return (
@@ -51,7 +56,10 @@ const ChangeInfo = () => {
           <Button key="cancel" onClick={handleCancel}>
             Hủy
           </Button>,
-          <Button key="save" type="primary" onClick={onFinish}>
+          <Button key="reset" onClick={handleFormReset}>
+            Reset
+          </Button>,
+          <Button key="save" type="primary" onClick={form.submit}>
             Lưu
           </Button>,
         ]}
@@ -60,12 +68,8 @@ const ChangeInfo = () => {
           className="edit-profile__form"
           layout="vertical"
           onFinish={onFinish}
-          initialValues={{
-            username: userInfor.username,
-            email: userInfor.email,
-            gender: userInfor.gender,
-            init: init,
-          }}
+          form={form}
+          initialValues={userInfor}
         >
           <Form.Item
             label="Username"
@@ -107,13 +111,13 @@ const ChangeInfo = () => {
               <Radio value="other">Khác</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item
+          {/* <Form.Item
             name="dob"
             label="Ngày sinh"
             rules={[{ required: true, message: "Vui lòng chọn ngày sinh" }]}
           >
             <DatePicker format={dateFormat} />
-          </Form.Item>
+          </Form.Item> */}
         </Form>
       </Modal>
     </div>

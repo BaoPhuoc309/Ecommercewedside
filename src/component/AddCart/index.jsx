@@ -14,9 +14,10 @@ const AddCart = () => {
 
   const getTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => {
-      const price = item.price
-        ? parseFloat(item.price.replace("$", "").replace(",", ""))
-        : 0;
+      const price =
+        typeof item.price === "string"
+          ? parseFloat(item.price.replace("$", "").replace(",", ""))
+          : 0;
       const quantity = item.quantity || 1;
       return total + price * quantity;
     }, 0);

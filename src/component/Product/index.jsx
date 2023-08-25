@@ -6,14 +6,17 @@ import { generatePath, useNavigate } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import "./style.scss";
 import { ROUTER_APP } from "../../constant/Router";
-
-const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+import { useDispatch } from "react-redux";
+import { actAddToCart } from "../../redux/feature/cartSlice";
 
 const Product = ({ products }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [value, setValue] = useState(3);
   const handleChangeProductDetails = (id) => {
     navigate(generatePath(ROUTER_APP.DETAIL, { id: id }));
+  };
+  const handleAddToCart = (product) => {
+    dispatch(actAddToCart({ ...product, quantity: 1 }));
   };
 
   return (
@@ -29,17 +32,16 @@ const Product = ({ products }) => {
                 hoverable
                 cover={<img src={product.imgURL} alt="" />}
               >
-                <Meta title={product.name}></Meta>
-                <span>
-                  <Rate tooltips={desc} onChange={setValue} value={value} />
-                  {value ? (
-                    <span className="ant-rate-text">{desc[value - 1]}</span>
-                  ) : (
-                    ""
-                  )}
-                </span>
+                <Meta title={product.name} />
+                <Rate disabled />
                 <h3>${product.price}</h3>
-                <Button type="primary">
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAddToCart(product);
+                  }}
+                  type="primary"
+                >
                   <ShoppingCartOutlined />
                 </Button>
               </Card>

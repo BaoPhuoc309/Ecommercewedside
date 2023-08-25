@@ -11,16 +11,16 @@ import NewProducts from "./Page/NewProducts";
 import ProfileLayout from "./Layout/ProfileLayout";
 import ProfiledPage from "./Page/HistoryPage";
 import ChangeInfo from "./component/ChangeInfo";
-import ChangeInForPage from "./Page/ChangeInForPage";
-import ChangePassPage from "./Page/ChangePassPage";
+
 import HistoryPage from "./Page/HistoryPage";
-import Profile from "./component/Profile/Profile";
+
 import DetailPage from "./Page/DetailPage";
-import AddCart from "./component/AddCart";
+
 import ShoppingCart from "./Page/shoppingCart";
 import { GlobalHistory } from "./utility/globalHistory";
 import CheckoutPage from "./Page/CheckoutPage";
 import SuccessPage from "./Page/SuccessPage";
+import ChangePassword from "./component/ChangePassword";
 
 function App() {
   return (
@@ -43,11 +43,11 @@ function App() {
           </Route>
 
           <Route element={<ProfileLayout />}>
-            <Route path={ROUTER_APP.PROFILE} element={<ChangeInForPage />} />
-            <Route path={ROUTER_APP.CHANGEINFO} element={<ChangeInForPage />} />
+            <Route path={ROUTER_APP.PROFILE} element={<ProfiledPage />} />
+            <Route path={ROUTER_APP.CHANGEINFO} element={<ChangeInfo />} />
             <Route
               path={ROUTER_APP.CHANGEPASSWORD}
-              element={<ChangePassPage />}
+              element={<ChangePassword />}
             />
             <Route path={ROUTER_APP.HISTORY} element={<HistoryPage />} />
           </Route>

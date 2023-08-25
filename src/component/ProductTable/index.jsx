@@ -43,6 +43,7 @@ const ProductTable = ({ cartItems }) => {
       key: "quantity",
       render: (_, product) => (
         <InputNumber
+          key={product.id}
           min={1}
           max={10}
           value={product.quantity}

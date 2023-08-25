@@ -1,7 +1,23 @@
-import { Avatar, Button, Card, Divider, Form, Input, List, Rate } from "antd";
+import {
+  Space,
+  Button,
+  Card,
+  Divider,
+  Form,
+  Input,
+  List,
+  Rate,
+  Avatar,
+} from "antd";
 import React from "react";
 import "./style.scss";
-import { FileTextOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  FileTextOutlined,
+  LikeOutlined,
+  MessageOutlined,
+  StarOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { actCreateComment } from "../../redux/feature/commentSlice";
 
@@ -12,7 +28,7 @@ const ProductReviews = ({ currentProduct, comments }) => {
   const onFinish = (values) => {
     const { title, rating, comment } = values;
     const newComments = {
-      productId: currentProduct,
+      productId: currentProduct.id,
       userId: userInfor.id,
       username: userInfor.username,
       title,
@@ -23,6 +39,13 @@ const ProductReviews = ({ currentProduct, comments }) => {
 
     dispatch(actCreateComment(newComments));
   };
+
+  const IconText = ({ icon, text }) => (
+    <Space>
+      {React.createElement(icon)}
+      {text}
+    </Space>
+  );
 
   return (
     <div className="product-detail__reviews">
@@ -85,30 +108,44 @@ const ProductReviews = ({ currentProduct, comments }) => {
       <div className="product-detail__existing-reviews">
         <h3 className="product-detail__reviews-title">Existing reviews</h3>
         <List
+          size="large"
           itemLayout="vertical"
-          dataSource={comments} // Use the passed-in 'comments' data
+          dataSource={comments} // Sử dụng dữ liệu 'comments' được truyền vào
           renderItem={(comment) => (
-            <Card key={comment.id} className="product-detail__review-card">
-              <div className="product-detail__review-entry">
-                <div className="product-detail__user-rating">
-                  <Rate disabled value={comment.rating} />
-                </div>
-                <div className="product-detail__user-avatar">
-                  <Avatar size={40} icon={<UserOutlined />} />
-                </div>
-                <div className="product-detail__review-content">
-                  <div className="product-detail__user-info">
-                    <p className="product-detail__user-name">
-                      {comment.username}
-                    </p>
-                  </div>
-                  <p className="product-detail__review-text">
-                    {comment.content}
-                  </p>
-                  <p className="product-detail__review-date">{comment.date}</p>
-                </div>
-              </div>
-            </Card>
+            <List.Item
+              key={comment.id}
+              className="product-detail__review-card"
+              actions={[
+                <IconText
+                  icon={StarOutlined}
+                  text="156"
+                  key="list-vertical-star-o"
+                />,
+                <IconText
+                  icon={LikeOutlined}
+                  text="156"
+                  key="list-vertical-like-o"
+                />,
+                <IconText
+                  icon={MessageOutlined}
+                  text="2"
+                  key="list-vertical-message"
+                />,
+              ]}
+              extra={
+                <img
+                  alt="product-detail"
+                  src={currentProduct.imgURL} // Thay "product.image" bằng đường dẫn ảnh thực tế trong sản phẩm
+                />
+              }
+            >
+              <List.Item.Meta
+                avatar={<Avatar size={40} icon={<UserOutlined />} />}
+                title={<a href={comment.href}>{comment.username}</a>}
+                description={comment.title}
+              />
+              {comment.content}
+            </List.Item>
           )}
         />
       </div>

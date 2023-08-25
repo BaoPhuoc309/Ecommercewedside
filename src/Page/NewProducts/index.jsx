@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  actfetchProductById,
   fetchAllProduct,
   setNewPage,
   updateFilter,
@@ -8,44 +9,41 @@ import {
 import { Pagination, Spin } from "antd";
 import Product from "../../component/Product";
 import Filter from "../../component/Fillter";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { convertPriceToNumber } from "../../utility/convertPriceToNumber";
 
 const NewProducts = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const searchParam = searchParams.get("search");
+  console.log(searchParam, "Search params: ");
   const { isLoading, products, pagination, filter, searchKey } = useSelector(
     (state) => state.product
   );
 
   useEffect(() => {
     const { price } = filter;
-    if (Array.isArray(price) && price.length === 2) {
-      const [minPrice, maxPrice] = price;
-      const newFilter = {
-        ...filter,
-        price_lte: maxPrice,
-        price_gte: minPrice,
-      };
-      delete newFilter.price;
-      dispatch(
-        fetchAllProduct({
-          _page: 1,
-          _limit: pagination.limitPerPage,
-          ...newFilter,
-          q: searchParam,
-        })
-      );
-    } else {
-      dispatch(
-        fetchAllProduct({
-          _page: 1,
-          _limit: pagination.limitPerPage,
-          filter,
-          q: searchParam,
-        })
-      );
-    }
+    const [minPriceStr, maxPriceStr] = price;
+
+    const minPrice = convertPriceToNumber(minPriceStr);
+    const maxPrice = convertPriceToNumber(maxPriceStr);
+
+    console.log(minPrice, maxPrice, "price: ");
+
+    const newFilter = {
+      ...filter,
+      price_gte: minPrice, // Giá trị tối thiểu
+      price_lte: maxPrice, // Giá trị tối đa
+    };
+    delete newFilter.price;
+    dispatch(
+      fetchAllProduct({
+        _page: 1,
+        _limit: pagination.limitPerPage,
+        ...newFilter,
+        q: searchParam,
+      })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, searchParam]);
 

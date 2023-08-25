@@ -1,0 +1,65 @@
+.product-tab {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+
+    .ant-card {
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .ant-card-cover {
+        height: 150px; /* Điều chỉnh chiều cao của hình ảnh */
+        margin: auto;
+        display: block;
+
+        img {
+          min-width: 100px;
+          object-fit: cover;
+        }
+      }
+
+      .ant-card-meta-title {
+        flex: 1;
+        align-items: center;
+        font-size: 14px;
+        max-width: 100%; /* Giới hạn chiều rộng */
+        line-height: 1.5em;
+        max-height: 3em;
+      }
+
+      .ant-rate {
+        margin-top: 6px;
+      }
+
+      h3 {
+        margin-top: 6px;
+        font-size: 16px;
+      }
+
+      .ant-btn {
+        margin-top: 6px;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+  }
+}

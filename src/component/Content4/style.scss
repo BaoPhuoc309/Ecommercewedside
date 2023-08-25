@@ -1,0 +1,58 @@
+@import "../../App.scss";
+
+.container {
+  .category-trending {
+    &__title {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    &__content {
+      font-size: 17px;
+      font-weight: 100;
+      text-align: center;
+      margin: 0;
+      margin-bottom: 40px;
+    }
+
+    .slider {
+      .card {
+        .card-top {
+          .ant-card {
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+              transform: translateY(-5px);
+            }
+
+            .ant-card-meta-title {
+              .ant-card-meta-title {
+                font-size: 14px; /* Giảm kích thước font cho tiêu đề */
+              }
+
+              .ant-rate {
+                margin-top: 6px; /* Giảm khoảng cách giữa tiêu đề và đánh giá */
+              }
+
+              h3 {
+                margin-top: 6px; /* Giảm khoảng cách giữa đánh giá và giá */
+                font-size: 16px; /* Giảm kích thước font cho giá */
+              }
+
+              .ant-btn {
+                margin-top: 6px; /* Giảm khoảng cách giữa giá và nút */
+                padding: 6px 12px; /* Giảm kích thước nút */
+                font-size: 12px; /* Giảm kích thước font cho nút */
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

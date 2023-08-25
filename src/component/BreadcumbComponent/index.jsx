@@ -1,7 +1,5 @@
 import { Breadcrumb } from "antd";
 import React from "react";
-
-import Home from "../../Page/Home";
 import { Link } from "react-router-dom";
 import { ROUTER_APP } from "../../constant/Router";
 import { HomeOutlined } from "@ant-design/icons";
@@ -20,6 +18,10 @@ const BreadcumbComponent = () => {
               </Link>
             </>
           ),
+        },
+        {
+          href: <Link to={ROUTER_APP.NEW_PRODUCT}></Link>,
+          title: "New Product",
         },
         {
           href: (

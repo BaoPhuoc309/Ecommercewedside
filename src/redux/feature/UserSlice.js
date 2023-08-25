@@ -3,6 +3,7 @@ import { userApis } from "../../APis/userApis";
 import { message } from "antd";
 import { globalNavigate } from "../../utility/globalHistory";
 import { ROUTER_APP } from "../../constant/Router";
+import { actClearCart } from "./cartSlice";
 
 const userInforFromLocalStorage = localStorage.getItem("userInfor");
 const userInfor = userInforFromLocalStorage
@@ -57,8 +58,42 @@ export const actLoginUser = createAsyncThunk(
 
 export const actUpdateUserById = createAsyncThunk(
   "user/updateUserById",
-  async ({ id, updatedUser }) => {
-    return await userApis.updateUserById(id, updatedUser);
+  async ({ id, updatedUser }, thunkAPI) => {
+    await userApis.updateUserById(id, updatedUser);
+    thunkAPI.dispatch(actFetchAllUsersById(id));
+  }
+);
+
+export const actUpdatePasswordUserById = createAsyncThunk(
+  "user/UpdatePasswordUserById",
+  async ({ id, updatedUser }, thunkAPI) => {
+    await userApis.updateUserById(id, updatedUser);
+    thunkAPI.dispatch(actClearCart());
+    thunkAPI.dispatch(logOut());
+  }
+);
+
+export const actUpdateUserAvatar = createAsyncThunk(
+  "user/uploadImage",
+  async ({ id, updatedUser }, thunkAPI) => {
+    await userApis.updateUserById(id, updatedUser);
+    thunkAPI.dispatch(actFetchAllUsersById(id));
+  }
+);
+
+export const actFetchAllUsers = createAsyncThunk(
+  "user/fetchAllUsers",
+  async (params) => {
+    const response = await userApis.getAllUsers(params.id);
+    return response.data;
+  }
+);
+
+export const actFetchAllUsersById = createAsyncThunk(
+  "user/fetchAllUsersById",
+  async (userId) => {
+    const user = await userApis.getUserById(userId);
+    return user;
   }
 );
 
@@ -134,12 +169,37 @@ const userSlice = createSlice({
       })
       .addCase(actUpdateUserById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userInfor = action.payload;
         message.success("Cập nhật thông tin người dùng thành công");
+        state.userInfor = action.payload;
       })
       .addCase(actUpdateUserById.rejected, (state) => {
         state.isLoading = false;
         message.error("Lỗi khi cập nhật thông tin người dùng");
+      })
+
+      .addCase(actUpdatePasswordUserById.fulfilled, (state, action) => {
+        // Cập nhật trạng thái sau khi thay đổi mật khẩu thành công
+        state.isLoading = false;
+        state.userInfor.password = action.payload.password;
+        state.userInfor.confirmPassword = action.payload.confirmPassword;
+        message.success("Thay đổi mật khẩu thành công");
+      })
+      .addCase(actUpdatePasswordUserById.rejected, (state, action) => {
+        // Xử lý khi có lỗi xảy ra trong quá trình thay đổi mật khẩu
+        state.isLoading = false;
+        message.error("Lỗi khi thay đổi mật khẩu");
+      })
+      .addCase(actFetchAllUsers.fulfilled, (state, action) => {
+        state.userInfor = action.payload;
+      })
+      .addCase(actFetchAllUsersById.fulfilled, (state, action) => {
+        state.userInfor = action.payload;
+      })
+      .addCase(actUpdateUserAvatar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userInfor = action.payload; // Cập nhật đường dẫn ảnh avatar mới
+        state.errors = {};
+        message.success("Cập nhật avatar thành công");
       });
   },
 });

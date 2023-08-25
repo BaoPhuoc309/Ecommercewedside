@@ -1,0 +1,37 @@
+.embedded-content {
+  background-image: url("../../assets/bg-works.88149694.jpg"); /* Đường dẫn tới hình ảnh của bạn */
+  background-size: cover;
+  background-position: 50% 0;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Canh giữa nội dung theo cả chiều dọc và ngang */
+  flex-direction: column;
+  height: 300px; /* Điều chỉnh chiều cao theo mong muốn */
+  text-align: center;
+  position: relative; /* Để lớp mờ có thể hoạt động chính xác */
+}
+
+.embedded-content::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.discount-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.shop-now-button {
+  margin-top: 16px;
+}

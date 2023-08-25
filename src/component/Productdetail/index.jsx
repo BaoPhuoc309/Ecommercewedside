@@ -20,21 +20,6 @@ const ProductDetail = ({ currentProduct, comments }) => {
 
   const averageRating = calculateAverageRating(comments);
 
-  const renderStarRating = (rating) => {
-    const roundedRating = Math.round(rating); // Làm tròn rating
-    const stars = [];
-
-    for (let i = 1; i <= 5; i++) {
-      if (i <= roundedRating) {
-        stars.push(<StarFilled key={i} className="star-filled" />);
-      } else {
-        stars.push(<StarOutlined key={i} className="star-outlined" />);
-      }
-    }
-
-    return stars;
-  };
-
   return (
     <div className="product-detail__container py-4 ">
       <div className="product-detail__wrapper flex">
@@ -63,7 +48,8 @@ const ProductDetail = ({ currentProduct, comments }) => {
                 <div className="product-detail__title">
                   <h1>{currentProduct.name}</h1>
                 </div>
-                <span>{renderStarRating(averageRating)}</span>
+
+                <Rate disabled value={averageRating} />
                 <p>
                   Speaker Marshall Middleton Black Nunc facilisis sagittis
                   ullamcorper. Proin lectus ipsum, gravida et mattis vulputate,

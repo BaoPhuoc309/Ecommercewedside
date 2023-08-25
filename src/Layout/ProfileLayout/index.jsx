@@ -5,7 +5,8 @@ import FooterComponent from "../../component/FooterComponent";
 import "./style.scss";
 import Profile from "../../component/Profile/Profile";
 import { Outlet } from "react-router-dom";
-const { Header, Content, Footer, Sider } = Layout;
+import ProfilePage from "../../Page/ProfilePage";
+const { Header, Content, Footer } = Layout;
 
 const ProfileLayout = () => {
   const {
@@ -16,35 +17,18 @@ const ProfileLayout = () => {
       <Header>
         <HeaderComponent />
       </Header>
-      <Content
-        className="h-100"
-        style={{
-          padding: 24,
-        }}
-      >
-        <Layout
-          style={{
-            padding: "24px",
-            background: colorBgContainer,
-            height: 500,
-          }}
+      <Content className="h-100">
+        <div
+          className="contentWrapper"
+          style={{ backgroundColor: colorBgContainer }}
         >
-          <Sider
-            style={{
-              background: colorBgContainer,
-            }}
-            width={400}
-          >
-            <Profile />
-          </Sider>
-          <Content
-            style={{
-              minHeight: 280,
-            }}
-          >
+          <div className="profileWrapper">
+            <ProfilePage />
+          </div>
+          <div className="content">
             <Outlet />
-          </Content>
-        </Layout>
+          </div>
+        </div>
       </Content>
       <Footer className="footer">
         <FooterComponent />
@@ -52,4 +36,5 @@ const ProfileLayout = () => {
     </Layout>
   );
 };
+
 export default ProfileLayout;

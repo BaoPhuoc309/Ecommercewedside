@@ -1,0 +1,38 @@
+.category-bestseller {
+  &__banner {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.card-top {
+  .ant-card {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .ant-card-meta-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .ant-rate {
+      margin-top: 8px;
+    }
+
+    h3 {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .ant-btn {
+      margin-top: 8px;
+    }
+  }
+}

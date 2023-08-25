@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Card, Form, Input, Button, Modal } from "antd";
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { actUpdateUserById } from "../../redux/feature/userSlice";
+import {
+  actUpdatePasswordUserById,
+  actUpdateUserById,
+} from "../../redux/feature/userSlice";
 
 const ChangePassword = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,17 +15,17 @@ const ChangePassword = () => {
 
   const onFinish = (values) => {
     const { newPassword, confirmPassword } = values;
-    console.log("asd", values);
-    console.log(userInfor.id, "userInfor.id");
-
     if (newPassword === confirmPassword) {
       dispatch(
-        actUpdateUserById({
+        actUpdatePasswordUserById({
           id: userInfor.id,
-          updatedUser: { password: newPassword },
+          updatedUser: {
+            password: newPassword,
+          },
         })
       );
     }
+    form.resetFields();
     setIsModalOpen(false);
   };
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { productApis } from "../../APis/productApis";
-import { converPriceToNumber } from "../../utility/helper";
+import { convertPriceToNumber } from "../../utility/convertPriceToNumber";
 
 const initialState = {
   isLoading: false,
@@ -12,7 +12,7 @@ const initialState = {
     total: 8,
   },
   filter: {
-    price: [0, 1790],
+    price: ["0", "2000.00"],
     brandsId: [],
   },
   searchKey: "",
@@ -52,8 +52,8 @@ const productSlice = createSlice({
       const { price, ...otherFilter } = action.payload;
       const [minPriceStr, maxPriceStr] = price;
 
-      // const minPrice = converPriceToNumber(minPriceStr);
-      // const maxPrice = converPriceToNumber(maxPriceStr);
+      const minPrice = convertPriceToNumber(minPriceStr);
+      const maxPrice = convertPriceToNumber(maxPriceStr);
 
       // console.log(minPrice, maxPrice, "asdasdasd");
 
@@ -61,7 +61,7 @@ const productSlice = createSlice({
       state.filter = {
         ...state.filter,
         ...otherFilter,
-        price: [minPriceStr, maxPriceStr],
+        price: [minPrice, maxPrice],
       };
       // }
     },
@@ -70,9 +70,9 @@ const productSlice = createSlice({
       state.filter.brandsId = action.payload;
     },
 
-    setSearchKey: (state,action) => {
+    setSearchKey: (state, action) => {
       state.searchKey = action.payload;
-    }
+    },
   },
 
   extraReducers: (builed) => {

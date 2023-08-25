@@ -6,10 +6,11 @@ import { actfetchProductById } from "../../redux/feature/productSlice";
 import { Card, Tabs } from "antd";
 import ProductReviews from "../../component/ProductReviews";
 import { actFetchAllComment } from "../../redux/feature/commentSlice";
-import { calculateAverageRating } from "../../utility/helper";
+import Content7 from "../../component/Content7";
 
 const DetailPage = () => {
   const product = useSelector((state) => state.product.currentProduct);
+  const { products, isLoading } = useSelector((state) => state.product);
   const { comments } = useSelector((state) => state.comment);
   const dispatch = useDispatch();
   const params = useParams();
@@ -33,9 +34,7 @@ const DetailPage = () => {
     {
       key: "2",
       label: "REVIEWS",
-      children: (
-        <ProductReviews comments={comments} currentProduct={product.id} />
-      ),
+      children: <ProductReviews comments={comments} currentProduct={product} />,
     },
   ];
 
@@ -46,6 +45,7 @@ const DetailPage = () => {
       <Card>
         <Tabs defaultActiveKey="1" items={items} />;
       </Card>
+      <Content7 />
     </div>
   );
 };
